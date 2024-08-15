@@ -1,21 +1,16 @@
 const express = require('express')
 const app = express()
 const db = require("./db");
+app.use(express.json());
 const port = 3000
+const routesCategories = require("./routes/categories");
+
 
 app.get('/', (req, res) => {
   res.send('Aplicação Wallet-App')
 })
 
-app.get("/categories", (req, res) => {
- db.query("SELECT * FROM categories", (error, response) => {
-  if(error) {
-    return res.status(500).json(error);
-  }
-
-  return res.status(200).json(response.rows);
- });
-})
+app.use("/categories", routesCategories);
 
 
 
