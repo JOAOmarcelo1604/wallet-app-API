@@ -1,18 +1,21 @@
-const express = require('express')
-const app = express()
+const express = require("express")
 const db = require("./db");
-app.use(express.json());
-const port = 3000
 const routesCategories = require("./routes/categories");
-const routesUser = require('./routes/users');
+const routesUser = require("./routes/users");
+const routesFinances = require("./routes/finances");
 
+const app = express();
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Aplicação Wallet-App')
+const port = 3000;
+
+app.get("/", (req, res) => {
+  res.send("Aplicação Wallet-App");
 })
 
 app.use("/categories", routesCategories);
 app.use("/users", routesUser);
+app.use("/finances", routesFinances);
 
 
 
