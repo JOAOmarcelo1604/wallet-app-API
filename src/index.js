@@ -4,6 +4,7 @@ const db = require("./db");
 app.use(express.json());
 const port = 3000
 const routesCategories = require("./routes/categories");
+const routesUser = require('./routes/users');
 
 
 app.get('/', (req, res) => {
@@ -11,17 +12,17 @@ app.get('/', (req, res) => {
 })
 
 app.use("/categories", routesCategories);
-
+app.use("/users", routesUser);
 
 
 
 app.listen(port, () => {
   db.connect()
-  .then(() => {
-    console.log("DB connected");
-  })
-  .catch((error) => {
-    throw new Error(error);
-  });
+    .then(() => {
+      console.log("DB connected");
+    })
+    .catch((error) => {
+      throw new Error(error);
+    });
   console.log(`Example app listening on port ${port}`)
 })
