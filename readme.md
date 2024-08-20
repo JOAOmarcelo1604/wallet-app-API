@@ -7,16 +7,14 @@
 
  ## Requirements
  -Node.js
- - Docker
+Docker
 
  ## Steps to run the project
 
 
 1. Clone the project
 
- '''
-git clone https://github.com/JOAOmarcelo1604/wallet-app-API.git
- '''
+ '''git clone https://github.com/JOAOmarcelo1604/wallet-app-API.git'''
 
  2. Navigate to project folder and Install Dependencies
 
