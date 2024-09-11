@@ -17,7 +17,7 @@ app.use(express.json());
 const port = process.env.PORT;
 
 app.get("/", (req, res) => {
-  res.send("Aplicação Wallet-App");
+  res.send("Olá, essa é a Aplicação Wallet-App! - dev JM");
 });
 
 app.use("/categories", routesCategories);
