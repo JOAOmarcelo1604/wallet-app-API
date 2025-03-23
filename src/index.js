@@ -7,6 +7,7 @@ const routesUser = require("./routes/users");
 const routesFinances = require("./routes/finances");
 
 const app = express();
+
 app.use(
   cors({
     origin: "*",
@@ -14,7 +15,7 @@ app.use(
 );
 app.use(express.json());
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
   res.send("Olá, essa é a Aplicação Wallet-App! - dev JM");
@@ -24,13 +25,14 @@ app.use("/categories", routesCategories);
 app.use("/users", routesUser);
 app.use("/finances", routesFinances);
 
-app.listen(port, () => {
-  db.connect()
-    .then(() => {
-      console.log("DB connected");
-    })
-    .catch((error) => {
-      throw new Error(error);
+db.connect()
+  .then(() => {
+    console.log("✅ Banco de dados conectado com sucesso!");
+    app.listen(port, "0.0.0.0", () => {
+      console.log(`🚀 Servidor rodando na porta ${port}`);
     });
-  console.log(`Example app listening on port ${port}`);
-});
+  })
+  .catch((error) => {
+    console.error("❌ Erro ao conectar ao banco de dados:", error);
+    process.exit(1); // Finaliza a aplicação em caso de erro
+  });
