@@ -1,10 +1,10 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const db = require("../db");
-const routesCategories = require("../routes/categories");
-const routesUser = require("../routes/users");
-const routesFinances = require("../routes/finances");
+const db = require("../src/db");
+const routesCategories = require("../src/routes/categories");
+const routesUser = require("../src/routes/users");
+const routesFinances = require("../src/routes/finances");
 
 const app = express();
 
